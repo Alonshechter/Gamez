@@ -1,0 +1,419 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Hasifa snake</title>
+    <link rel="stylesheet" href="app.css" type="text/css" />
+    <script src="node_modules/phaser/build/phaser.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="node_modules/jquery.numeric.js"></script>
+    <script src="gameFunctions.js"></script>
+    <script src="game.js"></script>
+
+    <style>
+        .input-group{
+            padding:10px
+        }
+
+        h3{
+            padding-left:10px
+            
+        }
+    </style>
+</head>
+<body style="overflow:hidden">
+
+    <div id="form">
+        <div style="background-color:#4d7ed8; color:whitesmoke; overflow:auto; width:100%; padding-left:35%;"><h5>מאפיין: יובל גילברד | מפתחים: ליאור טראו, עינת סמבן ואלון שכטר| גרפיקה: עינת סמבן ואלון שכטר </h5></div>
+        <h1 style="left:45%; top:2%; position:absolute">Snake game</h1>
+
+        <div class="input-group numeric" style="padding-left:800px;padding-top:3%;height:10%">
+            <button type="button" class="btn btn-success" id="generate" style="left:20px;top:10px">Generate your game!</button>
+            <p>Or use f10 shortcut to move between pages</p>
+        </div>
+        <!--left Bar-->
+        <div id="left" style="position:absolute;left:4%;width:15%;top:15%">
+            <!--Player-->
+            <div id="player-worm">
+                <h3>Player - worm <img src="assets/snake.png" width="70" height="33" alt="worm image" align="middle" /></h3>                               
+                <div class="input-group" style="width:100%">
+                    <label class="radio-inline"><input type="radio" name="wormtype" id="worm1" checked>Use worm 1</label>
+                    <label class="radio-inline"><input type="radio" name="wormtype" id="worm2">Use worm 2</label>
+                    <label>Initial Worm size (how many body links)</label>
+                    <p style="text-align:center"><i>2=< size  <=350</i></p>
+                    <input id="initialSize" type="number" class="form-control numeric" placeholder="2-350" value="5" min="2" max="350"  required>                    
+                    
+                </div>
+                <div class="input-group" style="width:100%">
+                    <label>Worm Speed</label>
+                    <p style=" text-align:center"><i>50=< speed  <=800</i></p>
+                    <input id="speed" type="number" class="form-control numeric" placeholder="50-800" value="300" min="50" max="800" required>
+                </div>
+                <div class="input-group" style="width:100%">
+                    <label>Worm Speed Increment</label>
+                    <p style=" text-align:center"><i>0=< speed increment  <=500</i></p>
+                    <input id="speedIncrement" type="number" class="form-control numeric" placeholder="0-500" value="10" min="0" max="500" required>
+                </div>
+            </div>
+            <!--Controls-->
+            <div id="Court">
+                <h3>Controls</h3>
+                <div class="input-group" style="width:100%">
+                    <label>Angle change per second</label>
+                    <p style=" text-align:center"><i>1=< angle <=1080</i></p>
+                    <input id="angle" type="number" class="form-control numeric" placeholder="1-1080" value="200" min="1" max="1080" required>
+                </div>
+                <div class="input-group numeric" style="">
+                    <label>Turbo - the change in speed upon pressing the Up key</label>
+                    <p style="text-align:center"><i>2=< turbo  <=2500</i></p>
+                    <input id="turbo" type="number" class="form-control numeric" placeholder="1-2500" value="100" min="1" max="2500" required>
+                </div>
+            </div>          
+           
+        </div>
+
+        <!--middle-->
+        <div id="form" style="position:absolute;left:22%;width:15%;top:15%">
+            <!--Court-->
+            <div id="Court">
+                <h3>Court</h3>
+                <div class="input-group" style="width:100%">
+                    <label>Court Width</label>
+                    <p style="text-align:center"><i>2500=< width  <=10000</i></p>
+                    <input id="courtWidth" type="number" class="form-control numeric" placeholder="2500-10,000" value="2500" min="2500" max="10000" required>
+                </div>
+                <div class="input-group" style="width:100%">
+                    <label>Court Height </label>
+                    <p style="text-align:center"><i>1000=< height  <=10,000</i></p>
+                    <input id="courtHeight" type="number" class="form-control numeric" placeholder="1000-10,000" value="1000" min="1000" max="10000" required>
+                </div>
+            </div>
+            <!--Pellets-->
+            <div id="pellets">
+                <h3>Pellets <img src="assets/pellet.png" alt="pellet image" align="middle" style="padding-left:1em" /></h3>
+                <div class="input-group" style="width:100%">
+                    <label>Pellet Growth (in links)</label>
+                    <p style="text-align:center"><i>1=< growth  <=10,000</i></p>
+                    <input id="growth" type="number" class="form-control numeric" placeholder="1-10,000" value="1" min="1" max="10000" required>
+                </div>
+                <div class="input-group numeric" style="width:100%">
+                    <label>Pellets Start Amount </label>
+                    <p style="text-align:center"><i>1=< start amount  <=2000</i></p>
+                    <input id="pelletStart" type="number" class="form-control numeric" placeholder="1-2000" value="100" min="1" max="2000" required>
+                </div>
+                <div class="input-group numeric" style="width:100%">
+                    <label>Pellets creation rate</label>
+                    <p style="text-align:center"><i>1=< creation rate <=10,000</i></p>
+                    <input id="pelletRate" type="number" class="form-control numeric" placeholder="1-10,000 pellets per minute" value="1" min="1" max="10000" required>
+                </div>
+            </div>
+
+        </div>
+        <!--middle2-->
+        <div id="form" style="position:absolute;left:40%;width:15%;top:14%">
+
+            <!--obstacles-->
+            <div id="obstacles">
+                <h3>Obstacles <img src="assets/bomb_smaller.png" alt="bomb image" align="bottom"  style="padding-left:1em" /></h3>
+                <div class="input-group" style="width:100%">
+                    <label>Obstacle Start Amount</label>
+                    <p style="text-align:center"><i>1=< start amount <=2000</i></p>
+                    <input id="obstacleStart" type="number" class="form-control numeric" placeholder="1-2000" value="1" min="1" max="2000" required>
+                </div>
+                <div class="input-group numeric" style="width:100%">
+                    <label>Obstacle Max Amount </label>
+                    <p style="text-align:center"><i>1=< max  <=2000</i></p>
+                    <input id="obstacleMax" type="number" class="form-control numeric" placeholder="1-2000" value="100" min="1" max="2000" required>
+                </div>
+                <div class="input-group numeric" style="width:100%">
+                    <label>Obstacle creation rate</label>
+                    <p style="text-align:center"><i>1=< rate <=10,000</i></p>
+                    <input id="ObstacleRate" type="number" class="form-control numeric" placeholder="1-10,000 obstacles per minute" value="1" min="1" max="10000" required>
+                </div>
+                <div class="input-group numeric" style="width:100%">
+                    <label>Obstacle Min Size ( width and height size in pixels)</label>
+                    <p style="text-align:center"><i>10=< min <=50</i></p>
+                    <input id="ObstacleMinSize" type="number" class="form-control numeric" placeholder="10 -50 obstacle size unit" value="10" min="10" max="50" required>
+                </div>
+                <div class="input-group numeric" style="width:100%">
+                    <label>Obstacle Max Size (width and height size in pixels)</label>
+                    <p style="text-align:center"><i>50=< max <=300</i></p>
+                    <input id="ObstacleMaxSize" type="number" class="form-control numeric" placeholder="50-300 obstacle size unit" value="50" min="50" max="300" required>
+                </div>
+            </div>
+       
+         </div>
+
+        <!--right-->
+        <div id="form" style="position:absolute;left:58%;width:15%;top:15%">
+
+            <!--PU-->
+            <div id="pu">
+                <h3>Power Ups <img src="assets/hp_pu.png" alt="hp pu image" align="middle" style="padding-left:1em" /></h3>
+                <div class="input-group" style="width:100%">
+                    <label>Power Up Start Amount</label>
+                    <p style="text-align:center"><i>1=< start amount <=2000</i></p>
+                    <input id="PuStart" type="number" class="form-control numeric" placeholder="1-2000" value="1" min="1" max="2500" required>
+                </div>
+                <div class="input-group numeric" style="width:100%">
+                    <label>Power Up Creation Rate </label>
+                    <p style="text-align:center"><i>1=< rate <=60</i></p>
+                    <input id="PuMax" type="number" class="form-control numeric" placeholder="1-60" value="1" min="1" max="60" required>
+                </div>
+                <div class="input-group numeric" style="width:100%">
+                    <label>Power Up Type</label>
+                    <p style="text-align:center"><i>0=< precentage of hp PU  <=100</i></p>
+                    <input id="PuType" type="number" class="form-control numeric" placeholder="0-100 precentage of hp PU generates" value="30" min="0" max="100" required>
+                </div>
+                <div class="input-group numeric" style="width:100%">
+                    <label>Power Up Disappearance  Rate</label>
+                    <p style="text-align:center"><i>1=<  Disappearance  Rate <=10,000</i></p>
+                    <input id="Pudis" type="number" class="form-control numeric" placeholder="1-10,000 seconds Power up is available for pickup" value="10" min="1" max="10000" required>
+                </div>
+                <h3>Invincable Power Up <img src="assets/inv_pu.png" alt="invincable pu image"  align="middle" style="" /></h3>
+                <div class="input-group numeric" style="width:100%">
+                    <label>how long the power up lasts</label>
+                    <p style="text-align:center"><i>1=< lasting effect <=100</i></p>
+                    <input id="PuInv" type="number" class="form-control numeric" placeholder="1-100 [s]" value="1" min="1" max="100" required>
+                </div>
+                <div class="input-group numeric" style="width:100%">
+                    <label>for how long the player is invincible upon game start </label>
+                    <p style="text-align:center"><i>1=< grace period <=100</i></p>
+                    <input id="Grace" type="number" class="form-control numeric" placeholder="1-100 [s]" value="1" min="1" max="100" required>
+                </div>
+            </div>
+        </div>
+        <!--extreme right-->
+        <div id="form" style="position:absolute;left:76%;width:15%;top:15%">
+            <!--lives-->
+            <div id="initialLives">
+                <h3>Lives</h3>
+                <div class="input-group" style="width:100%">
+                    <label>Lives Upon Start (how many lives in a round)</label>
+                    <p style="text-align:center"><i>1=< lives <=10</i></p>
+                    <input id="livesStart" type="number" class="form-control numeric" placeholder="1-10" value="3" min="1" max="10" required>
+                </div>
+            </div>
+
+            <!--HP-->
+            <div id="HPdefinitions">
+                <h3>Hit Points</h3>
+                <div class="input-group" style="width:100%">
+                    <label>HP Per Life</label>
+                    <p style="text-align:center"><i>1=< hp  <=10,000</i></p>
+                    <input id="hpPerLife" type="number" class="form-control numeric" placeholder="1-10,000" value="10" min="1" max="10000" required>
+                </div>
+                <div class="input-group numeric" style="width:100%">
+                    <label>HP Regeneration intervals (auto health increase 1 hp every portion of a second) </label>
+                    <p style="text-align:center"><i>0.1=< intervals <=15</i></p>
+                    <input id="HPRegenInterval" type="text" class="form-control numeric" placeholder="0.1-15 seconds intervals" value="1.5" min="0.1" max="15" required>
+                </div>
+                <div class="input-group numeric" style="width:100%">
+                    <label>HP Power UP Amount (hp amount a PU gives)</label>
+                    <p style="text-align:center"><i>1=< HP per PU <=10,000</i></p>
+                    <input id="hpPUAmount" type="number" class="form-control numeric" placeholder="1-10,000" value="2" min="1" max="10000" required>
+                </div>
+
+
+            </div>
+            <!--previous game stats-->
+            <div id="previousStats" style="display:none">
+                <h3>Last Game Stats</h3>
+                <div class="input-group" style="width:100%">
+                    <label>Score</label>
+                    <input id="gameScore" type="number" class="form-control numeric" placeholder="0" value="0">
+                </div>
+            </div>
+        </div>
+     </div>
+
+            <div id="gui" style="position:absolute;display:none;height:15%;background-color:#998272;width:100%">
+
+                <div style="padding-left:800px;padding-top:5%;height:100%;">
+                    <button type="button" class="btn btn-success" style="left:20px;top:10px " id="backPage">Back to Tweek</button>
+                    <button type="button" class="btn btn-primary" style="left:20px;top:10px ">Lives <span class="badge" id="lives">7</span></button>
+                    <button type="button" class="btn btn-primary" style="left:20px;top:10px ">HP <span class="badge" id="hp">7</span></button>
+                    <button type="button" class="btn btn-primary" style="left:20px;top:10px ">Score <span class="badge" id="score">0</span></button>
+                    <button type="button" class="btn btn-primary" style="left:20px;top:10px ">Invincable power UPs collected <span class="badge" id="invincablePU">0</span></button>
+                    <button type="button" class="btn btn-primary" style="left:20px;top:10px ">Time <span class="badge" id="time">7</span></button>
+                    <button type="button" class="btn btn-primary" style="left:20px;top:10px ">Size <span class="badge" id="size">7</span></button>
+                    <button type="button" class="btn btn-primary" style="left:20px;top:10px ">Speed <span class="badge" id="showspeed">7</span></button>
+                </div>
+
+            </div>
+            <div id="content" style="position:absolute;top:15%"></div>
+            <script>
+                var invalidInputSum = 0;
+                var game;
+                var gsnaketype, gSnakeStartSize, gSpeed, gSpeedIncrement, gHeight, gWidth, gAngle, gAngleChange, gTurbo, gGrowth, gPelletsInitialCount, gPelletsRate;
+                var gObstacleMinSize, gObstacleMaxSize, gObstacleRate, gObstacleMaxAmount, gObstacleInitialCount;
+                var gPUstartAmount, gPuCreationRate, gPuType, gPudisappernace;
+                var gHPperLife, gHPRegenInterval, ghpPUAmount, gStartingLives;
+                var gPuInv, gPuGrace;
+
+                $(".numeric").numeric();
+
+                $(":radio").on("change", function () {
+                    var snakeImg = $("#player-worm img");
+                    if ($("#worm2").is(":checked")) {
+                        snakeImg.attr("src", "assets/snake2.png");
+                    } else {
+                        snakeImg.attr("src", "assets/snake.png");
+                    }
+                })
+                $("#initialSize").on('input', ConstantValidation);
+                $("#form").on("input", "input[required]", ConstantValidation);
+
+                document.addEventListener("keydown", movetoPage);
+                function movetoPage(event) {
+                    var isGuiVisible = $("#gui").is(":visible");
+                    // alert($("gui").is(":visible"));
+
+                    //if f10 was pressed and the user is at the game page.
+                    if (event.keyCode == 121 && isGuiVisible) {
+                        //alert("f10 was pressed and this is the game page.");
+                        event.preventDefault();
+                        backToSimulationPage();                        
+                        return;
+                    }
+                    //if f10 was pressed and the user is at the simulation page.
+                    if (event.keyCode == 121 && !isGuiVisible) {
+                        //alert("f10 was pressed and this is the simulation page.");
+                        generateGame();
+                        //this dosen't seem to work, if there is already a game defined. user have to click on the game area for the state to reset.
+                        document.getElementById("content").focus();
+                       
+                    }
+                }
+
+                $("#generate").click(generateGame);
+                function generateGame() {
+                    //alert(checkAllValids());
+                   
+                    if (checkAllValids()) {                        
+                        gSnakeStartSize = parseInt($("#initialSize").val());
+                        gSpeed = parseInt($("#speed").val());
+                        gSpeedIncrement = parseInt($("#speedIncrement").val());
+                        gHeight = parseInt($("#courtHeight").val());
+                        gWidth = parseInt($("#courtWidth").val());
+                        gAngle = parseInt($("#angle").val());
+                        gTurbo = parseInt($("#turbo").val());
+                        gGrowth = parseInt($("#growth").val());
+                        gPelletsInitialCount = parseInt($("#pelletStart").val());
+                        gPelletsRate = parseFloat($("#pelletRate").val());
+                        //gAngleChange = $("#angleChange").val();
+                        gObstacleMinSize = parseInt($("#ObstacleMinSize").val());
+                        gObstacleMaxSize = parseInt($("#ObstacleMaxSize").val());
+                        gObstacleRate = parseFloat($("#ObstacleRate").val());
+                        gObstacleMaxAmount = parseInt($("#obstacleMax").val());
+                        gObstacleInitialCount = parseInt($("#obstacleStart").val());
+                        gPUstartAmount = parseInt($("#PuStart").val());
+                        gPuCreationRate = parseFloat($("#PuMax").val());
+                        gPuType = parseInt($("#PuType").val());
+                        gPudisappernace = parseInt($("#Pudis").val());
+                        gStartingLives = gLives = parseInt($("#livesStart").val());
+                        gHPperLife = window.gHP = parseInt($("#hpPerLife").val());
+                        gHPRegenInterval = parseFloat($("#HPRegenInterval").val());
+                        ghpPUAmount = parseInt($("#hpPUAmount").val());
+                        gPuInv = parseInt($("#PuInv").val());
+                        gPuGrace = parseInt($("#Grace").val());
+
+                        if ($("#worm2").is(':checked')) {
+                            isAltSnakeTexture = true;
+                        } else {
+                            isAltSnakeTexture = false;
+                        }
+
+                        //console.log("snaketype: worm 1: " + $("#worm1").is(':checked') + " worm 2: " + $("#worm2").is(':checked'));
+                        console.log("gSnakeStartSize: " + gSnakeStartSize);
+                        console.log("gSpeed: " + gSpeed);
+                        console.log("gSpeedIncrement: " + gSpeedIncrement);
+                        console.log("gHeight: " + gHeight);
+                        console.log("gWidth: " + gWidth);
+                        console.log("gAngle: " + gAngle);
+                        //console.log("gAngleChange: " + gAngleChange);
+                        console.log("gTurbo: " + gTurbo);
+                        console.log("gGrowth: " + gGrowth);
+                        console.log("gPelletsInitialCount: " + gPelletsInitialCount);
+                        console.log("gPelletsRate: " + gPelletsRate);
+                        console.log("gObstacleMaxSize: " + gObstacleMaxSize);
+                        console.log("gObstacleMinSize: " + gObstacleMinSize);
+                        console.log("gObstacleRate: " + gObstacleRate);
+                        console.log("gObstacleMaxAmount: " + gObstacleMaxAmount);
+                        console.log("gObstacleInitialCount" + gObstacleInitialCount);
+                        console.log("gPUstartAmount: " + gPUstartAmount);
+                        console.log("gPuType: " + gPuType);
+                        console.log("gPuCreationRate: " + gPuCreationRate);
+                        console.log("gPUstartAmount" + gPUstartAmount);
+                        //console.log("gLives: " + gLives);
+                        console.log("gStartingLives: " + gStartingLives);
+                        console.log("gHPperLife: " + gHPperLife);
+                        console.log("gHPRegenInterval: " + gHPRegenInterval);
+                        console.log("ghpPUAmount: " + ghpPUAmount);
+
+                        $("#form").hide();
+                        $("#gui").show();
+                        $("#content").show();
+                        // document.body.style.overflow = "hidden";
+                        var height = window.innerHeight * 0.9;
+                        var width = window.innerWidth;
+                        if (game == null) {
+                            game = new Phaser.Game(width, height, Phaser.CANVAS, 'content');
+                            game.state.add('main', mainState);
+                        } else {
+                            game.paused = false;
+                        }
+                        game.state.start('main');
+
+                    }
+                   
+                }
+                
+                
+                function ConstantValidation(event) {
+                    var input = $(event.target);
+                    if (input.attr("id") == 'HPRegenInterval') {
+                        var value = parseFloat(input.val());
+                        var min = parseFloat(input.attr("min"));
+                        var max = parseFloat(input.attr("max"));
+                        console.log('value: ' + value + " min: " + min + " max: " + max);
+                    } else{
+                        var value = parseInt(input.val());
+                        var min = parseInt(input.attr("min"));
+                        var max = parseInt(input.attr("max"));
+                    }
+
+                    if (value == null || value < min || value > max) {
+                        input[0].setCustomValidity(Error);
+                        input.css("background-color", "#FA9C9C");
+                    } else {
+                        input[0].setCustomValidity('');
+                        input.css("background-color", "white");                        
+                    }
+                }
+               
+                function checkAllValids() {                    
+                    var inputs = document.getElementById("form").querySelectorAll("input[required]");
+                    for (var i = 0; i < inputs.length; i++) {
+                         console.log(inputs[i].getAttribute("id")+": "+ inputs[i].checkValidity());                      
+                        if (!inputs[i].checkValidity()) {
+                            $(inputs[i]).css("background-color", "#FA9C9C");
+                            alert("Please make sure all parameters are filled and within range");
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+
+               
+                $("#backPage").click(backToSimulationPage);
+
+
+            </script>
+</body>
+
+</html>

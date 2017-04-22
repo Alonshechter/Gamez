@@ -1,0 +1,6 @@
+c:\users\lior\documents\visual studio 2015\Projects\Phaser Project Template - Javascript1\Phaser Project Template - Javascript1\bin\Phaser Project Template - Javascript1.dll.config
+c:\users\lior\documents\visual studio 2015\Projects\Phaser Project Template - Javascript1\Phaser Project Template - Javascript1\bin\Phaser Project Template - Javascript1.dll
+c:\users\lior\documents\visual studio 2015\Projects\Phaser Project Template - Javascript1\Phaser Project Template - Javascript1\bin\Phaser Project Template - Javascript1.pdb
+c:\users\lior\documents\visual studio 2015\Projects\Phaser Project Template - Javascript1\Phaser Project Template - Javascript1\obj\Debug\Phaser Project Template - Javascript1.csprojResolveAssemblyReference.cache
+c:\users\lior\documents\visual studio 2015\Projects\Phaser Project Template - Javascript1\Phaser Project Template - Javascript1\obj\Debug\Phaser Project Template - Javascript1.dll
+c:\users\lior\documents\visual studio 2015\Projects\Phaser Project Template - Javascript1\Phaser Project Template - Javascript1\obj\Debug\Phaser Project Template - Javascript1.pdb

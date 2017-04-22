@@ -1,0 +1,42 @@
+C:\Users\lior\Documents\Visual Studio 2015\Projects\Hasifa-snake\Hasifa-snake\bin\Hasifa-snake.dll.config
+C:\Users\lior\Documents\Visual Studio 2015\Projects\Hasifa-snake\Hasifa-snake\bin\Hasifa-snake.dll
+C:\Users\lior\Documents\Visual Studio 2015\Projects\Hasifa-snake\Hasifa-snake\bin\Hasifa-snake.pdb
+C:\Users\lior\Documents\Visual Studio 2015\Projects\Hasifa-snake\Hasifa-snake\obj\Debug\Hasifa-snake.csprojResolveAssemblyReference.cache
+C:\Users\lior\Documents\Visual Studio 2015\Projects\Hasifa-snake\Hasifa-snake\obj\Debug\Hasifa-snake.dll
+C:\Users\lior\Documents\Visual Studio 2015\Projects\Hasifa-snake\Hasifa-snake\obj\Debug\Hasifa-snake.pdb
+C:\phaser\projects\Hasifa-snake\Hasifa-snake\bin\Hasifa-snake.dll.config
+C:\phaser\projects\Hasifa-snake\Hasifa-snake\bin\Hasifa-snake.dll
+C:\phaser\projects\Hasifa-snake\Hasifa-snake\bin\Hasifa-snake.pdb
+C:\phaser\projects\Hasifa-snake\Hasifa-snake\obj\Debug\Hasifa-snake.csprojResolveAssemblyReference.cache
+C:\phaser\projects\Hasifa-snake\Hasifa-snake\obj\Debug\Hasifa-snake.dll
+C:\phaser\projects\Hasifa-snake\Hasifa-snake\obj\Debug\Hasifa-snake.pdb
+C:\phaser\projects\Hasifa-snake9-2\Hasifa-snake\Hasifa-snake\bin\Hasifa-snake.dll.config
+C:\phaser\projects\Hasifa-snake9-2\Hasifa-snake\Hasifa-snake\bin\Hasifa-snake.dll
+C:\phaser\projects\Hasifa-snake9-2\Hasifa-snake\Hasifa-snake\bin\Hasifa-snake.pdb
+C:\phaser\projects\Hasifa-snake9-2\Hasifa-snake\Hasifa-snake\obj\Debug\Hasifa-snake.csprojResolveAssemblyReference.cache
+C:\phaser\projects\Hasifa-snake9-2\Hasifa-snake\Hasifa-snake\obj\Debug\Hasifa-snake.dll
+C:\phaser\projects\Hasifa-snake9-2\Hasifa-snake\Hasifa-snake\obj\Debug\Hasifa-snake.pdb
+C:\wamp64\www\Hasifa-snake1.2\bin\Hasifa-snake.dll.config
+C:\wamp64\www\Hasifa-snake1.2\bin\Hasifa-snake.dll
+C:\wamp64\www\Hasifa-snake1.2\bin\Hasifa-snake.pdb
+C:\wamp64\www\Hasifa-snake1.2\obj\Debug\Hasifa-snake.csprojResolveAssemblyReference.cache
+C:\wamp64\www\Hasifa-snake1.2\obj\Debug\Hasifa-snake.dll
+C:\wamp64\www\Hasifa-snake1.2\obj\Debug\Hasifa-snake.pdb
+C:\wamp64\www\Hasifa-snake27.2Einat\bin\Hasifa-snake.dll.config
+C:\wamp64\www\Hasifa-snake27.2Einat\bin\Hasifa-snake.dll
+C:\wamp64\www\Hasifa-snake27.2Einat\bin\Hasifa-snake.pdb
+C:\wamp64\www\Hasifa-snake27.2Einat\obj\Debug\Hasifa-snake.csprojResolveAssemblyReference.cache
+C:\wamp64\www\Hasifa-snake27.2Einat\obj\Debug\Hasifa-snake.dll
+C:\wamp64\www\Hasifa-snake27.2Einat\obj\Debug\Hasifa-snake.pdb
+C:\wamp64\www\Hasifa-snake8.3Einat\bin\Hasifa-snake.dll.config
+C:\wamp64\www\Hasifa-snake8.3Einat\bin\Hasifa-snake.dll
+C:\wamp64\www\Hasifa-snake8.3Einat\bin\Hasifa-snake.pdb
+C:\wamp64\www\Hasifa-snake8.3Einat\obj\Debug\Hasifa-snake.csprojResolveAssemblyReference.cache
+C:\wamp64\www\Hasifa-snake8.3Einat\obj\Debug\Hasifa-snake.dll
+C:\wamp64\www\Hasifa-snake8.3Einat\obj\Debug\Hasifa-snake.pdb
+C:\wamp64\www\Hasifa-snake8.3_2_Einat\bin\Hasifa-snake.dll.config
+C:\wamp64\www\Hasifa-snake8.3_2_Einat\bin\Hasifa-snake.dll
+C:\wamp64\www\Hasifa-snake8.3_2_Einat\bin\Hasifa-snake.pdb
+C:\wamp64\www\Hasifa-snake8.3_2_Einat\obj\Debug\Hasifa-snake.csprojResolveAssemblyReference.cache
+C:\wamp64\www\Hasifa-snake8.3_2_Einat\obj\Debug\Hasifa-snake.dll
+C:\wamp64\www\Hasifa-snake8.3_2_Einat\obj\Debug\Hasifa-snake.pdb
